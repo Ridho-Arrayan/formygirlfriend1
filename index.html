@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Halaman Sederhana</title> 
+    <style> 
+        /* Pengaturan tampilan umum */ 
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            background-color: #ffffff; 
+            font-family: Arial, sans-serif; 
+        } 
+        .container { 
+            text-align: center; 
+        } 
+
+        /* Tampilan layar pertama */ 
+        .image { 
+            width: 150px; 
+            height: 150px; 
+            background-size: cover; 
+            margin-bottom: 20px; 
+        } 
+        .text { 
+            font-size: 24px; 
+            color: #000; 
+            margin-bottom: 20px; 
+        } 
+        .buttons { 
+            display: flex; 
+            gap: 10px; 
+            justify-content: center; 
+        } 
+        .button { 
+            background-color: #ff7f7f; 
+            border: none; 
+            border-radius: 20px; 
+            padding: 10px 20px; 
+            color: #fff; 
+            font-size: 18px; 
+            cursor: pointer; 
+        } 
+
+        /* Tampilan animasi loading */ 
+        .loading { 
+            display: none; 
+            font-size: 24px; 
+            color: #ff7f7f; 
+            animation: heart-animation 2s forwards; 
+        } 
+        @keyframes heart-animation { 
+            0% { transform: scale(0); opacity: 0; } 
+            100% { transform: scale(1); opacity: 1; } 
+        } 
+
+        /* Tampilan layar kedua */ 
+        .second-screen { 
+            display: none; 
+            text-align: center; 
+        } 
+        .second-screen img { 
+            width: 150px; 
+            height: auto; 
+        } 
+        .second-screen p { 
+            font-size: 16px; 
+            color: #000; 
+            margin-top: 10px; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <!-- Layar Pertama --> 
+    <div class="container" id="firstScreen"> 
+        <div class="image" alt="Karakter kartun lucu" style="background-image: url('https://storage.googleapis.com/a1aa/image/ZZBFlHSXzfRvGCWGRVmwRV9TceBHNCalFdEEzPpvq2sAjSwTA.jpg');"></div> 
+        <div class="text">ayang sayang aku kan??</div> 
+        <div class="buttons"> 
+            <button class="button" onclick="showLoading()">iya!!</button> 
+            <button class="button" id="ndaButton" onclick="moveButton()">nda</button> 
+        </div> 
+    </div> 
+
+    <!-- Layar Loading --> 
+    <div class="loading" id="loadingScreen">❤</div> 
+
+    <!-- Layar Kedua --> 
+    <div class="second-screen" id="secondScreen"> 
+        <img src="https://storage.googleapis.com/a1aa/image/ZZBFlHSXzfRvGCWGRVmwRV9TceBHNCalFdEEzPpvq2sAjSwTA.jpg" alt="Gambar kartun lucu dua beruang saling berpelukan dengan hati di atasnya"> 
+        <p>aku tau pacarku sayang aku &lt;3</p> 
+    </div> 
+
+    <script> 
+        // Fungsi untuk memindahkan tombol 'nda' ke posisi acak 
+        function moveButton() { 
+            const button = document.getElementById('ndaButton'); 
+            const x = Math.random() * 200 - 100; 
+            const y = Math.random() * 200 - 100; 
+            button.style.transform = `translate(${x}px, ${y}px)`; 
+        } 
+
+        // Fungsi untuk menampilkan layar loading dengan animasi hati 
+        function showLoading() { 
+            document.getElementById('firstScreen').style.display = 'none'; 
+            const loading = document.getElementById('loadingScreen'); 
+            loading.style.display = 'block'; 
+            setTimeout(() => { 
+                loading.style.display = 'none'; 
+                document.getElementById('secondScreen').style.display = 'block'; 
+            }, 2000); // Atur durasi animasi loading di sini 
+        } 
+    </script> 
+</body> 
+</html>
